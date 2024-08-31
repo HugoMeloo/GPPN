@@ -1,1 +1,2 @@
-# GPPN
+Lista de Funcionalidades:
+* 1

@@ -15,3 +15,7 @@
 * Exibição do controle financeiro, relacionado a quantidade de agendamentos realizados e cancelados, onde mostre o valor total arrecadado ou filtrado por meses do ano;
 
 * Fila Virtual, quando cancelar um agendamento dentro da aba de calendário, chamar o próximo da fila já cadastrado no sistema;
+  
+
+  # MER 
+  ![mer do projeto GPPN](/imagem/mer.png)

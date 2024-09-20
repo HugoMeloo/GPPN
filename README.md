@@ -16,6 +16,24 @@
 
 * Fila Virtual, quando cancelar um agendamento dentro da aba de calendário, chamar o próximo da fila já cadastrado no sistema;
   
+  # Prototipagem das Telas:
+
+  # Tela Não Logada (Clientes)
+  ![Tela não logada (clientes) do projeto GPPN](/imagem/Tela%20Não%20Logada%20(Clientes).png)
+  
+  # Tela Não Logada (Produtos)
+  
+  # Tela de Login
+
+  # Tela de Cadastro
+
+  # Tela de Empresas
+
+  # Tela de Agendamento
+
+  # Tela de Estoque
+
+  # Tela de Financeiro
 
   # MER 
   ![mer do projeto GPPN](/imagem/mer.png)

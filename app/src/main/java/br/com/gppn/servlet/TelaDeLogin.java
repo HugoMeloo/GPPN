@@ -26,7 +26,7 @@ public class TelaDeLogin extends HttpServlet {
 
 
 
-        req.getRequestDispatcher("index.html").forward(req, resp);
+        req.getRequestDispatcher("index.jsp").forward(req, resp);
 
     }
 }

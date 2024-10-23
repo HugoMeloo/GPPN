@@ -36,7 +36,7 @@ public class TelaDeCadastro extends HttpServlet {
         // carDao.createCar(car);
 
 
-        req.getRequestDispatcher("index.html").forward(req, resp);
+        req.getRequestDispatcher("index.jsp").forward(req, resp);
 
     }
 }

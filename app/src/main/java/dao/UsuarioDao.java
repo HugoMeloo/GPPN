@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 public class UsuarioDao {
     public void createUsuario (Usuario user) {
 
-        String SQL = "INSERT INTO USUARIO (USER) VALUES (?)";
+        String SQL = "INSERT INTO USUARIO (USER, SENHA) VALUES (?,?)";
 
         try {
             Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa","sa");
@@ -19,6 +19,8 @@ public class UsuarioDao {
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
 
             preparedStatement.setString(1, user.getUsuario());
+            preparedStatement.setString(2, user.getSenha());
+
             preparedStatement.execute();
 
             System.out.println("success in insert user");

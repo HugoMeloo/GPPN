@@ -14,6 +14,9 @@ public class TelaDeLogin extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String usuario = req.getParameter("usuario");
         System.out.println(usuario);
+        String senha = req.getParameter("senha");
+        System.out.println(senha);
+
         //Car car = new Car();
         //CarDao carDao = new CarDao();
 

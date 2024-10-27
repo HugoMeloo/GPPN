@@ -13,7 +13,7 @@ import java.util.List;
 
 @WebServlet({"/ExibirEmpresas", "/admin/ExibirEmpresas"})
 
-public class ExibirEmpresas extends HttpServlet {
+public class ExibirEmpresasServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

@@ -9,6 +9,7 @@
     <title>Login GPPN</title>
 </head>
 <body>
+<div class= "bg-warning text-dark p-3">
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="login-box text-center p-4">
             <h1>GPPN</h1>
@@ -25,9 +26,11 @@
 
                 <button type="submit" class="btn btn-light btn-block font-weight-bold mt-3">Acessar</button>
             </form>
-            <p class="mt-3">Não tem uma conta? <a href="#">Cadastre-se</a></p>
+            <p class="mt-3">Não tem uma conta? <a href="cadastro.jsp">Cadastre-se</a></p>
             <p>Problemas de acesso? <a href="#">Fale conosco</a></p>
         </div>
     </div>
+  </div>
+
 </body>
 </html>

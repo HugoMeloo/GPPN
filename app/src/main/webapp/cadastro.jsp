@@ -9,16 +9,17 @@
     <title>Cadastro GPPN</title>
 </head>
 <body>
+<div class= "bg-warning text-dark p-3">
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="register-box text-center p-4">
             <h1>GPPN</h1>
             <form>
                 <div class="form-row">
-                    <div class="form-group col-md-6">
+                    <div class="form-group">
                         <label for="nome">Nome:</label>
                         <input type="text" class="form-control" id="nome" name="nome" required>
                     </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group">
                         <label for="sobrenome">Sobrenome:</label>
                         <input type="text" class="form-control" id="sobrenome" name="sobrenome" required>
                     </div>
@@ -49,9 +50,11 @@
                     <input type="password" class="form-control" id="confirmar-senha" name="confirmar-senha" required>
                 </div>
 
-                <button type="submit" class="btn btn-light btn-block font-weight-bold mt-3">Cadastrar-se</button>
+                <button type="submit" class="btn btn-primary btn-block font-weight-bold mt-3">Cadastrar-se</button>
             </form>
         </div>
     </div>
+   </div>
+
 </body>
 </html>

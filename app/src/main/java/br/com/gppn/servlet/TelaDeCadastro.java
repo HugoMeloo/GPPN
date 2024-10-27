@@ -1,5 +1,8 @@
 package br.com.gppn.servlet;
 
+import dao.UsuarioDao;
+import model.Usuario;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,32 +14,38 @@ import java.io.IOException;
 
 public class TelaDeCadastro extends HttpServlet {
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String nome = req.getParameter("nome");
-        System.out.println(nome);
-        String sobrenome = req.getParameter("sobrenome");
-        System.out.println(sobrenome);
-        String endereco = req.getParameter("endereco");
-        System.out.println(endereco);
-        String telefone = req.getParameter("telefone");
-        System.out.println(telefone);
-        String email = req.getParameter("email");
-        System.out.println(email);
-        String senha = req.getParameter("senha");
-        System.out.println(senha);
-        String confirSenha = req.getParameter("confirSenha");
-        System.out.println(confirSenha);
+        @Override
+        protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+            req.getRequestDispatcher("cadastro.jsp").forward(req, resp);
 
-        //Car car = new Car();
-        //CarDao carDao = new CarDao();
+        }
 
-        // car.setName(carName);
-        // carDao.createCar(car);
+        @Override
+        protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+            String username = req.getParameter("username");
+            String password = req.getParameter("password");
 
-        req.getRequestDispatcher("index.jsp").forward(req, resp);
+            Usuario user = new Usuario(username, password);
+
+            boolean isValidUser = new UsuarioDao().verifyCredentials(user);
+
+            if (isValidUser) {
+
+                req.getSession().setAttribute("loggedUser", username);
+
+                resp.sendRedirect("ExibirEmpresas"); // Redireciona para página
+
+            } else {
+
+                req.setAttribute("message", "Invalid credentials!");
+
+                req.getRequestDispatcher("cadastro.jsp").forward(req, resp);
+
+            }
+
+        }
 
     }
-}
+

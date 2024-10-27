@@ -1,32 +1,51 @@
 package dao;
 
+import config.ConnectionPoolConfig;
 import model.Usuario;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class UsuarioDao {
-    public void createUsuario (Usuario user) {
+    public boolean verifyCredentials(Usuario user) {
 
-        String SQL = "INSERT INTO USUARIO (USER, SENHA) VALUES (?,?)";
+        String SQL = "SELECT * FROM USR WHERE USERNAME = ?";
 
         try {
-            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa","sa");
 
-            System.out.println("Sucess in database connection");
+            Connection connection = ConnectionPoolConfig.getConnection();
 
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
 
-            preparedStatement.setString(1, user.getUsuario());
-            preparedStatement.setString(2, user.getSenha());
+            preparedStatement.setString(1, user.getUsername());
+            ResultSet resultSet = preparedStatement.executeQuery();
 
-            preparedStatement.execute();
+            System.out.println("success in select username");
 
-            System.out.println("success in insert user");
+            while (resultSet.next()) {
+
+                String password = resultSet.getString("password");
+
+                if (password.equals(user.getPassword())) {
+
+                    return true;
+
+                }
+
+            }
+
             connection.close();
+
+            return false;
+
         } catch (Exception e) {
-            System.out.println("Fail in database connection");
+
+            System.out.println("Error: " + e.getMessage());
+
+            return false;
+
         }
     }
 }

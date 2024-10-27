@@ -1,60 +1,18 @@
 package model;
 
 public class Usuario {
-    private String nome;
-    private String usuario; // email
-    private String senha;
-    private String endereco;
-    private String telefone;
-    private String confirSenha;
+    private String username;
+    private String password;
 
-    public String getTelefone() {
-        return telefone;
+    public Usuario(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public String getUsername() {
+        return username;
     }
 
-    public String getConfirSenha() {
-        return confirSenha;
-    }
-
-    public void setConfirSenha(String confirSenha) {
-        this.confirSenha = confirSenha;
-    }
-
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-}
+    public String getPassword() {
+        return password;
+    }}

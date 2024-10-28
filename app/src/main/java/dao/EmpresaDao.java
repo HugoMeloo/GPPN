@@ -114,10 +114,10 @@ public class EmpresaDao {
 
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
             preparedStatement.setString(1, empresa.getNome());
-            preparedStatement.setString(2, empresa.getImage());
-            preparedStatement.setString(3, empresa.getImage());
-            preparedStatement.setString(4, empresa.getImage());
-            preparedStatement.setString(5, empresa.getImage());
+            preparedStatement.setString(2, empresa.getEndereco());
+            preparedStatement.setString(3, empresa.getTelefone());
+            preparedStatement.setString(4, empresa.getTipoServ());
+            preparedStatement.setString(5, empresa.getEmail());
             preparedStatement.setString(6, empresa.getImage());
 
             preparedStatement.execute();

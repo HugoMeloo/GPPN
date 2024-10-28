@@ -27,7 +27,7 @@ public class CadastrarEmpresaServlet extends HttpServlet {
         Map<String, String> parameters = uploadImage(req);
 
         String empresaId = parameters.get("id");
-        String nomeEmpresa = parameters.get("car-name");
+        String nomeEmpresa = parameters.get("empresa-name");
         String endereco = parameters.get("endereco-empresa");
         String telefone = parameters.get("telefone-empresa");
         String servico = parameters.get("servico-empresa");

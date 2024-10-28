@@ -13,7 +13,7 @@
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="register-box text-center p-4">
             <h1>GPPN</h1>
-            <form>
+            <form action="/telaCadastro" method="post">
                 <div class="form-row">
                     <div class="form-group">
                         <label for="nome">Nome:</label>
@@ -54,7 +54,5 @@
             </form>
         </div>
     </div>
-   </div>
-
 </body>
 </html>

@@ -6,6 +6,7 @@
     <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <meta http-equiv="Content-Type" content="text/html" charset=UTF-8>
     <link rel="stylesheet" href="style-index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <title>GPPN - Software de Gestão para Pequenos Negócios</title>
 </head>
 <body>
@@ -24,8 +25,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Empresas</a>
                     </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="/login">Login</a>
+                    <form class="d-flex ms-3">
+                     <a class="btn btn-outline-light" href="/login" role="button">
+                         <i class="bi bi-person"></i> Login
+                     </a>
+                     </form>
                     </li>
                 </ul>
             </div>

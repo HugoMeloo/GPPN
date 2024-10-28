@@ -23,9 +23,10 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String username = req.getParameter("username");
-        String password = req.getParameter("password");
+        String username = req.getParameter("email");
+        String password = req.getParameter("senha");
 
+        System.out.println(username + password);
         Usuario user = new Usuario(username, password);
 
         boolean isValidUser = new UsuarioDao().verifyCredentials(user);
@@ -34,7 +35,7 @@ public class LoginServlet extends HttpServlet {
 
             req.getSession().setAttribute("loggedUser", username);
 
-            resp.sendRedirect("ExibirEmpresas"); // Redireciona para página
+            resp.sendRedirect("dashboard.jsp"); // Redireciona para página
 
         } else {
 

@@ -13,7 +13,7 @@
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="login-box text-center p-4">
             <h1>GPPN</h1>
-            <form>
+            <form action="/login" method="post">
                 <div class="form-group">
                     <label for="email">E-mail:</label>
                     <input type="email" class="form-control" id="email" name="email" required>

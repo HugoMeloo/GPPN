@@ -34,11 +34,19 @@ public class CadastrarEmpresaServlet extends HttpServlet {
         String email = parameters.get("email-empresa");
         String imagemEmpresa = parameters.get("image-empresa");
 
+        System.out.println(empresaId);
         System.out.println(nomeEmpresa);
+        System.out.println(endereco);
+        System.out.println(telefone);
+        System.out.println(servico);
+        System.out.println(email);
+        System.out.println(imagemEmpresa);
+
+
 
         EmpresaDao empresaDao = new EmpresaDao();
         Empresa empresa = new Empresa(empresaId, nomeEmpresa, endereco, telefone, servico, email, imagemEmpresa);
-        if (empresaId.isBlank()) {
+        if (empresaId == null || empresaId.isBlank()) {
             empresaDao.createEmpresa(empresa);
         } else {
             empresaDao.updateEmpresa(empresa);
@@ -68,7 +76,7 @@ public class CadastrarEmpresaServlet extends HttpServlet {
 
             } catch (Exception ex) {
 
-                requestParameters.put("image", "img/default-empresa.jpg");
+                requestParameters.put("image-empresa", "img/default-empresa.jpg");
 
             }
 
@@ -87,7 +95,7 @@ public class CadastrarEmpresaServlet extends HttpServlet {
         } else {
 
             String fileName = processUploadedFile(item);
-            requestParameters.put("image", "img/".concat(fileName));
+            requestParameters.put("image-empresa", "img/".concat(fileName));
 
         }
 

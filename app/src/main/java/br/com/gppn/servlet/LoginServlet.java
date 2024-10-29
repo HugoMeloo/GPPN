@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
 
             req.getSession().setAttribute("loggedUser", username);
 
-            resp.sendRedirect("dashboard.jsp"); // Redireciona para página
+            resp.sendRedirect("/ExibirEmpresas"); // Redireciona para página
 
         } else {
 

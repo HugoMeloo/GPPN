@@ -6,6 +6,7 @@ import model.Empresa;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -24,7 +25,7 @@ public class EmpresaDao {
             preparedStatement.setString(1, empresa.getNome());
             preparedStatement.setString(2, empresa.getEndereco());
             preparedStatement.setString(3, empresa.getTelefone());
-            preparedStatement.setString(4, empresa.getTipoServ());
+            preparedStatement.setString(4, empresa.getServico());
             preparedStatement.setString(5, empresa.getEmail());
             preparedStatement.setString(6, empresa.getImage());
 
@@ -40,20 +41,19 @@ public class EmpresaDao {
     public List<Empresa> ExibirEmpresas() {
 
         String SQL = "SELECT * FROM EMPRESA";
+        List<Empresa> empresas = new ArrayList<>();
 
         try {
-
             Connection connection = ConnectionPoolConfig.getConnection();
-
+            if (connection == null) {
+                System.out.println("Conexão falhou: conexão é nula.");
+                return Collections.emptyList();
+            }
 
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
-
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            List<Empresa> empresas = new ArrayList<>();
-
             while (resultSet.next()) {
-
                 String empresaId = resultSet.getString("id");
                 String nome = resultSet.getString("nome");
                 String endereco = resultSet.getString("endereco");
@@ -62,26 +62,19 @@ public class EmpresaDao {
                 String email = resultSet.getString("email");
                 String imagem = resultSet.getString("image");
 
-                Empresa empresa = new Empresa(empresaId, nome, endereco, telefone, servico,email, imagem);
-
+                Empresa empresa = new Empresa(empresaId, nome, endereco, telefone, servico, email, imagem);
                 empresas.add(empresa);
-
             }
 
-            System.out.println("success in select * empresa");
-
+            System.out.println("Empresas recuperadas: " + empresas.size());
             connection.close();
-
             return empresas;
 
-        } catch (Exception e) {
-
-            System.out.println("fail in database connection");
-
+        } catch (SQLException e) {
+            System.out.println("Erro na conexão com o banco de dados: " + e.getMessage());
+            e.printStackTrace(); // Imprime a stack trace para detalhes do erro
             return Collections.emptyList();
-
         }
-
     }
 
     public void deletedEmpresaById(String empresaId) {
@@ -116,7 +109,7 @@ public class EmpresaDao {
             preparedStatement.setString(1, empresa.getNome());
             preparedStatement.setString(2, empresa.getEndereco());
             preparedStatement.setString(3, empresa.getTelefone());
-            preparedStatement.setString(4, empresa.getTipoServ());
+            preparedStatement.setString(4, empresa.getServico());
             preparedStatement.setString(5, empresa.getEmail());
             preparedStatement.setString(6, empresa.getImage());
 

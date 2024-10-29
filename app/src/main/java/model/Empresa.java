@@ -5,7 +5,7 @@ public class Empresa {
     private String nome;
     private String endereco;
     private String telefone;
-    private String tipoServ;
+    private String servico;
     private String email;
     private String image;
 
@@ -14,12 +14,12 @@ public class Empresa {
         this.nome = nome;
     }
 
-    public Empresa(String id, String nome, String endereco, String telefone, String tipoServ, String email, String image) {
+    public Empresa(String id, String nome, String endereco, String telefone, String servico, String email, String image) {
         this.id = id;
         this.nome = nome;
         this.endereco = endereco;
         this.telefone = telefone;
-        this.tipoServ = tipoServ;
+        this.servico = servico;
         this.email = email;
         this.image = image;
 
@@ -41,8 +41,8 @@ public class Empresa {
         return telefone;
     }
 
-    public String getTipoServ() {
-        return tipoServ;
+    public String getServico() {
+        return servico;
     }
 
     public String getEmail() {

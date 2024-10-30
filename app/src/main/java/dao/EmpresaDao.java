@@ -15,7 +15,7 @@ public class EmpresaDao {
 
     public void createEmpresa(Empresa empresa) {
 
-        String SQL = "INSERT INTO EMPRESA (NOME, ENDERECO, TELEFONE, SERVICO, EMAIL, IMAGE) VALUES (?,?,?,?,?,?)";
+        String SQL = "INSERT INTO EMPRESA (NOME, ENDERECO, TELEFONE, SERVICO, EMAIL) VALUES (?,?,?,?,?,?)";
 
         try {
             Connection connection = ConnectionPoolConfig.getConnection();
@@ -112,6 +112,8 @@ public class EmpresaDao {
             preparedStatement.setString(4, empresa.getServico());
             preparedStatement.setString(5, empresa.getEmail());
             preparedStatement.setString(6, empresa.getImage());
+            preparedStatement.setInt(7, Integer.parseInt(empresa.getId()));
+
 
             preparedStatement.execute();
 

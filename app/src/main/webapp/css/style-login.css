@@ -1,0 +1,15 @@
+body {
+    background-color: #efbf04;
+    font-family: Arial, sans-serif;
+}
+
+.login-box {
+    background-color: #000;
+    color: #fff;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+

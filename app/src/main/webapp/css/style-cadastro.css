@@ -1,0 +1,13 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #EFBF04;
+}
+
+.register-box {
+    background-color: #000;
+    color: #fff;
+    border-radius: 8px;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    width: 100%;
+    max-width: 500px;
+}

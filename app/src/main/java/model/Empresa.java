@@ -1,38 +1,36 @@
 package model;
 
-public class Usuario {
+public class Empresa {
     private String id;
     private String nome;
-    private String sobrenome;
     private String endereco;
     private String telefone;
+    private String servico;
     private String email;
-    private String senha;
+    private String image;
 
-    public Usuario(String id, String nomeUs, String sobrenome, String endereco, String telefone, String email, String senha) {
-        this.id = id;
-        this.nome = nomeUs;
-        this.sobrenome = sobrenome;
-        this.endereco = endereco;
-        this.telefone = telefone;
-        this.email = email;
-        this.senha = senha;
+
+    public Empresa(String nome) {
+        this.nome = nome;
     }
 
-    public Usuario(String email, String senha) {
+    public Empresa(String id, String nome, String endereco, String telefone, String servico, String email, String image) {
+        this.id = id;
+        this.nome = nome;
+        this.endereco = endereco;
+        this.telefone = telefone;
+        this.servico = servico;
         this.email = email;
-        this.senha = senha;
+        this.image = image;
+
     }
 
     public String getId() {
         return id;
     }
+
     public String getNome() {
         return nome;
-    }
-
-    public String getSobrenome() {
-        return sobrenome;
     }
 
     public String getEndereco() {
@@ -43,11 +41,15 @@ public class Usuario {
         return telefone;
     }
 
+    public String getServico() {
+        return servico;
+    }
+
     public String getEmail() {
         return email;
     }
-
-    public String getSenha() {
-        return senha;
+    public String getImage() {
+        return image;
     }
+
 }

@@ -1,148 +1,156 @@
-html{
+main {
+   margin-bottom: 86px; /* Ajuste o valor conforme necessário */
 
 
-  --body-color:#FFFCFF ;
+}
 
-  --header-color:#d36c6c;
-
-  --header-button:#92a1d1;
-
-  --color-weekdays: #247BA0;
-
+html {
+  --body-color: #C9C9C9;
+  --header-color: #4F4F4F;
+  --header-button: #4F4F4F;
+  --color-weekdays: #4F4F4F;
   --box-shadow: #CBD4C2;
-
   --hover: #e8faed;
-
-  --current-day:#e8f4fa;
-
+  --current-day: #e8f4fa;
   --event-color: #58bae4;
-
   --modal-event: #e8f4fa;
-
-
- --color-day:white;
-
-
+  --color-day: white;
 }
 
-
-
-body {
+#teste {
   display: flex;
-  margin-top: 50px;
-  justify-content: center;
-  background-color: var(--body-color);
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh; /* para garantir a centralização vertical */
+    margin: 0;
+    background-color: var(--body-color);
 }
+
 button {
-  width: 75px;
+  width: 100px; /* 75px * 0.75 */
   cursor: pointer;
   box-shadow: 0px 0px 2px gray;
   border: none;
   outline: none;
-  padding: 5px;
+  padding: 5px; /* 5px * 0.75 */
   border-radius: 5px;
-  color: white;
+  color: black;
 }
 
 #header {
-  padding: 10px;
-  color: var(--header-color) ;
-  font-size: 26px;
+  padding: 20px; /* 10px * 0.75 */
+  color: var(--header-color);
+  font-size: 22px; /* 26px * 0.75 */
   font-family: sans-serif;
   display: flex;
   justify-content: space-between;
+
 }
-#header button {
-  background-color:var(--header-button);
-}
+
 #container {
-  width: 770px;
+  width: 640px; /* 770px * 0.75 */
+  margin-left: 260px;
+  margin-top: 10px;
 }
+
 #weekdays {
-  width: 100%;
+  width: 92%;
   display: flex;
-  color: var(--color-weekdays) ;
+  color: var(--color-weekdays);
 }
+
 #weekdays div {
-  width: 100px;
-  padding: 10px;
+  width: 100px; /* 100px * 0.75 */
+  padding: 8px; /* 10px * 0.75 */
 }
+
 #calendar {
   width: 100%;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
 }
+
 .day {
-  width: 100px;
-  padding: 10px;
-  height: 100px;
+  width: 75px; /* 100px * 0.75 */
+  padding: 8px; /* 10px * 0.75 */
+  height: 75px; /* 100px * 0.75 */
   cursor: pointer;
   box-sizing: border-box;
   background-color: var(--color-day);
-  margin: 5px;
+  margin: 4px; /* 5px * 0.75 */
   box-shadow: 0px 0px 3px var(--box-shadow);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   border-radius: 15%;
 }
+
 .day:hover {
   background-color: var(--hover);
 }
 
 .day + #currentDay {
-  background-color:var(--current-day);
+  background-color: var(--current-day);
 }
+
 .event {
-  font-size: 10px;
-  padding: 3px;
+  font-size: 8px; /* 10px * 0.75 */
+  padding: 2px; /* 3px * 0.75 */
   background-color: var(--event-color);
   color: white;
   border-radius: 5px;
-  max-height: 55px;
+  max-height: 41px; /* 55px * 0.75 */
   overflow: hidden;
 }
+
 .padding {
   cursor: default !important;
   background-color: var(--body-color) !important;
   box-shadow: none !important;
 }
+
 #newEventModal, #deleteEventModal {
   display: none;
   z-index: 20;
-  padding: 25px;
+  padding: 25px; /* 25px * 0.75 */
   background-color: var(--modal-event);
   box-shadow: 0px 0px 3px black;
   border-radius: 5px;
-  width: 350px;
-  top: 100px;
-  left: calc(50% - 175px);
+  width: 350px; /* 350px * 0.75 */
+  top: 240px; /* 100px * 0.75 */
+  left: calc(50% - 175px); /* 175px * 0.75 */
   position: absolute;
   font-family: sans-serif;
 }
+
 #eventTitleInput {
-  padding: 10px;
+  padding: 8px; /* 10px * 0.75 */
   width: 100%;
   box-sizing: border-box;
-  margin-bottom: 25px;
+  margin-bottom: 19px; /* 25px * 0.75 */
   border-radius: 3px;
   outline: none;
   border: none;
   box-shadow: 0px 0px 3px gray;
 }
+
 #eventTitleInput.error {
   border: 2px solid red;
 }
+
 #cancelButton, #deleteButton {
   background-color: var(--header-color);
 }
+
 #saveButton, #closeButton {
   background-color: var(--header-button);
 }
+
 #eventText {
-  font-size: 14px;
+  font-size: 10px; /* 14px * 0.75 */
 }
+
 #modalBackDrop {
   display: none;
   top: 0px;

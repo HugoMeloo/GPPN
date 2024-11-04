@@ -15,7 +15,7 @@ public class EmpresaDao {
 
     public void createEmpresa(Empresa empresa) {
 
-        String SQL = "INSERT INTO EMPRESA (NOME, ENDERECO, TELEFONE, SERVICO, EMAIL) VALUES (?,?,?,?,?,?)";
+        String SQL = "INSERT INTO EMPRESA (NOME, ENDERECO, TELEFONE, SERVICO, EMAIL, IMAGE) VALUES (?,?,?,?,?,?)";
 
         try {
             Connection connection = ConnectionPoolConfig.getConnection();
@@ -35,6 +35,8 @@ public class EmpresaDao {
             connection.close();
         } catch (Exception e) {
             System.out.println("Falha na conexão");
+            e.printStackTrace();
+
         }
     }
 

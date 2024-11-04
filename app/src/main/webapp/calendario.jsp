@@ -12,7 +12,7 @@
   <link href="./css/dark-mode.css" rel="stylesheet">
   <link href="./css/dashboard.css" rel="stylesheet">
 
-  <title>Calendario</title>
+  <title>GPPN | Agenda</title>
 </head>
 <body>
 
@@ -58,7 +58,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/">
+                            <a class="nav-link" href="/estoque.jsp">
                                 <span data-feather="box" class="align-text-bottom"></span> Estoque
                             </a>
                         </li>

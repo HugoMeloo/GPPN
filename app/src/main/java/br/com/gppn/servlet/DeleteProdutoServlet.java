@@ -15,7 +15,7 @@ public class DeleteProdutoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
-        String produtoId = req.getParameter("id-produto");
+        String produtoId = req.getParameter("idProduto");
 
         new ProdutoDao().deletedProdutoById(produtoId);
 

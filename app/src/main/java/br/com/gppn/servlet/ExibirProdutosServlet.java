@@ -22,6 +22,6 @@ public class ExibirProdutosServlet extends HttpServlet {
 
         req.setAttribute("produtos", produtos);
 
-        req.getRequestDispatcher("/produto.jsp").forward(req, resp);
+        req.getRequestDispatcher("/estoque.jsp").forward(req, resp);
     }
 }

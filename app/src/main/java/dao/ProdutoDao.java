@@ -1,7 +1,6 @@
 package dao;
 
 import config.ConnectionPoolConfig;
-import model.Empresa;
 import model.Produto;
 
 import java.sql.Connection;
@@ -21,12 +20,12 @@ public class ProdutoDao {
 
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
 
-            preparedStatement.setString(1, produto.getProduto());
+            preparedStatement.setString(1, produto.getNomeProduto());
             preparedStatement.setDouble(2, produto.getQuantidade());
             preparedStatement.setDouble(3, produto.getPrecoUni());
             preparedStatement.setString(4, produto.getCodigoItem());
-            preparedStatement.setInt(5, produto.getTipoItem());
-            preparedStatement.setString(6, produto.getImage());
+            preparedStatement.setString(5, produto.getTipoItem());
+            preparedStatement.setString(6, produto.getImagemProduto());
 
 
             preparedStatement.execute();
@@ -55,15 +54,15 @@ public class ProdutoDao {
 
             while (resultSet.next()) {
 
-                String produtoId = resultSet.getString("idProduto");
-                String nomeProduto = resultSet.getString("nomeProduto");
+                String idProduto = resultSet.getString("id");
+                String nomeProduto = resultSet.getString("nome");
                 double quantidade = resultSet.getDouble("quantidade");
-                double precoUni = resultSet.getDouble("precoUni");
-                String codigoItem = resultSet.getString("codigoItem");
-                int tipoItem = resultSet.getInt("tipoItem");
+                double precoUni = resultSet.getDouble("preco");
+                String codigoItem = resultSet.getString("cod");
+                String tipoItem = resultSet.getString("tipo");
                 String imagem = resultSet.getString("image");
 
-                Produto produto = new Produto(produtoId, nomeProduto, quantidade, precoUni, codigoItem, tipoItem, imagem);
+                Produto produto = new Produto(idProduto, nomeProduto, quantidade, precoUni, codigoItem, tipoItem, imagem);
 
                 produtos.add(produto);
 
@@ -76,15 +75,13 @@ public class ProdutoDao {
             return produtos;
 
         } catch (Exception e) {
-
-            System.out.println("fail in database connection");
-
+            System.out.println("Erro na conexão com o banco de dados: " + e.getMessage());
+            e.printStackTrace(); // Imprime a stack trace para detalhes do erro
             return Collections.emptyList();
-
         }
     }
 
-    public void deletedProdutoById(String produtoId) {
+    public void deletedProdutoById(String idProduto) {
         String SQL = "DELETE PRODUTO WHERE ID = ?";
 
         try {
@@ -92,10 +89,10 @@ public class ProdutoDao {
 
 
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
-            preparedStatement.setString(1, produtoId);
+            preparedStatement.setString(1, idProduto);
             preparedStatement.execute();
 
-            System.out.println("success on deleted produto with id: " + produtoId);
+            System.out.println("success on deleted produto with id: " + idProduto);
             connection.close();
 
         } catch (Exception e) {
@@ -113,12 +110,14 @@ public class ProdutoDao {
             Connection connection = ConnectionPoolConfig.getConnection();
 
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
-            preparedStatement.setString(1, produto.getProduto());
+            preparedStatement.setString(1, produto.getNomeProduto());
             preparedStatement.setDouble(2, produto.getQuantidade());
             preparedStatement.setDouble(3, produto.getPrecoUni());
             preparedStatement.setString(4, produto.getCodigoItem());
-            preparedStatement.setInt(5, produto.getTipoItem());
-            preparedStatement.setString(6, produto.getImage());
+            preparedStatement.setString(5, produto.getTipoItem());
+            preparedStatement.setString(6, produto.getImagemProduto());
+            preparedStatement.setInt(7, Integer.parseInt(produto.getIdProduto()));
+
 
             preparedStatement.execute();
 

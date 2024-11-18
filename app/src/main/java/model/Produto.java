@@ -1,20 +1,20 @@
 package model;
 
 public class Produto {
-    private String id;
+    private String idProduto;
     private String nomeProduto;
     private double quantidade;
     private double precoUni;
     private String codigoItem;
-    private int tipoItem;
+    private String tipoItem;
     private String image;
 
     public Produto(String nome) {
         this.nomeProduto = nome;
     }
 
-    public Produto(String id, String nome, double quantidadeProduto, double precoUnitario, String codigoItem, int tipoItem, String image) {
-        this.id = id;
+    public Produto(String idProduto, String nome, double quantidadeProduto, double precoUnitario, String codigoItem, String tipoItem, String image) {
+        this.idProduto = idProduto;
         this.nomeProduto = nome;
         this.quantidade = quantidadeProduto;
         this.precoUni = precoUnitario;
@@ -23,11 +23,11 @@ public class Produto {
         this.image = image;
 
     }
-    public String getId() {
-        return id;
+    public String getIdProduto() {
+        return idProduto;
     }
 
-    public String getProduto() {
+    public String getNomeProduto() {
         return nomeProduto;
     }
 
@@ -43,11 +43,11 @@ public class Produto {
         return codigoItem;
     }
 
-    public int getTipoItem() {
+    public String getTipoItem() {
         return tipoItem;
     }
 
-    public String getImage() {
+    public String getImagemProduto() {
         return image;
     }
 }

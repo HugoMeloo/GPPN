@@ -27,19 +27,26 @@ public class CadastrarProdutoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         Map<String, String> parameters = uploadImage(req);
 
-        String produtoId = parameters.get("id-produto");
+        String produtoId = parameters.get("idProduto");
         String nomeProduto = parameters.get("produto-name");
         double quantidade = Double.parseDouble(parameters.get("quantidade"));
         double precoUni = Double.parseDouble(parameters.get("preco"));
         String codigoItem = parameters.get("codigoItem");
-        int tipoItem = Integer.parseInt(parameters.get("tipoItem"));
-        String imagemProduto = parameters.get("image-produto");
+        String tipoItem = parameters.get("tipoItem");
+        String imagemProduto = parameters.get("imageProduto");
 
+        System.out.println(produtoId);
         System.out.println(nomeProduto);
+        System.out.println(quantidade);
+        System.out.println(precoUni);
+        System.out.println(codigoItem);
+        System.out.println(tipoItem);
+        System.out.println(imagemProduto);
+
 
         ProdutoDao produtoDao = new ProdutoDao();
         Produto produto = new Produto(produtoId, nomeProduto, quantidade, precoUni, codigoItem, tipoItem, imagemProduto);
-        if (produtoId.isBlank()) {
+        if (produtoId == null ||produtoId.isBlank()) {
             produtoDao.createProduto(produto);
         } else {
             produtoDao.updateProduto(produto);
@@ -69,7 +76,7 @@ public class CadastrarProdutoServlet extends HttpServlet {
 
             } catch (Exception ex) {
 
-                requestParameters.put("image", "img/default-produto.jpg");
+                requestParameters.put("imageProduto", "img/default-produto.jpg");
 
             }
 
@@ -88,7 +95,7 @@ public class CadastrarProdutoServlet extends HttpServlet {
         } else {
 
             String fileName = processUploadedFile(item);
-            requestParameters.put("image", "img/".concat(fileName));
+            requestParameters.put("imageProduto", "img/".concat(fileName));
 
         }
 

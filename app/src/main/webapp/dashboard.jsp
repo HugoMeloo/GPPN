@@ -52,12 +52,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/">
-                                <span data-feather="box" class="align-text-bottom"></span> Estoque
+                            <a class="nav-link" href="/ExibirProdutos">
+                            <span data-feather="box" class="align-text-bottom"></span> Estoque
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/">
+                            <a class="nav-link" href="/financeiro.jsp">
                                 <span data-feather="dollar-sign" class="align-text-bottom"></span> Financeiro
                             </a>
                         </li>

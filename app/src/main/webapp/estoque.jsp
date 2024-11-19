@@ -200,18 +200,17 @@
                                         <input type="text" class="form-control" id="codigoItem" name="codigoItem" required>
                                     </div>
                                   <div class="form-group">
-                                      <label for="tipoItem-${produto.idProduto}">Tipo de Item:</label>
-                                      <select class="form-control" id="tipoItem-${produto.idProduto}" name="tipoItem" onchange="checkAddNewOption('${produto.idProduto}')" required>
-                                          <option value="Electronic" ${produto.tipoItem == 'Electronic' ? 'selected' : ''}>Electronic</option>
-                                          <option value="Mechanic" ${produto.tipoItem == 'Mechanic' ? 'selected' : ''}>Mechanic</option>
-                                          <option value="Accessory" ${produto.tipoItem == 'Accessory' ? 'selected' : ''}>Accessory</option>
-                                          <option value="addNew">Adicionar Novo</option>
-                                      </select>
-                                      <!-- Campo de entrada que será exibido quando "Adicionar Novo" for selecionado -->
-                                      <input type="text" class="form-control mt-2" id="newTipoItem-${produto.idProduto}" placeholder="Especifique o novo tipo" style="display: none;">
-                                      <button type="button" class="btn btn-secondary mt-2" id="addTipoItemButton-${produto.idProduto}" style="display: none;" onclick="addNewOption('${produto.idProduto}')">Adicionar</button>
-                                  </div>
-
+                                   <label for="tipoItem-${produto.idProduto}">Tipo de Item:</label>
+                                   <select class="form-control" id="tipoItem-${produto.idProduto}" name="tipoItem" onchange="checkAddNewOption('${produto.idProduto}')" required>
+                                       <option value="Electronic" ${produto.tipoItem == 'Electronic' ? 'selected' : ''}>Electronic</option>
+                                       <option value="Mechanic" ${produto.tipoItem == 'Mechanic' ? 'selected' : ''}>Mechanic</option>
+                                       <option value="Accessory" ${produto.tipoItem == 'Accessory' ? 'selected' : ''}>Accessory</option>
+                                       <option value="addNew">Adicionar Novo</option>
+                                   </select>
+                                   <!-- Campo de entrada que será exibido quando "Adicionar Novo" for selecionado -->
+                                   <input type="text" class="form-control mt-2" id="newTipoItem-${produto.idProduto}" placeholder="Especifique o novo tipo" style="display: none;">
+                                   <button type="button" class="btn btn-secondary mt-2" id="addTipoItemButton-${produto.idProduto}" style="display: none;" onclick="addNewOption('${produto.idProduto}')">Adicionar</button>
+                                   </div>
                                     <div class="form-group">
                                         <label for="imageProduto">Escolha uma nova foto do produto (opcional)</label>
                                         <input type="file" class="form-control" name="imageProduto" id="imageProduto">

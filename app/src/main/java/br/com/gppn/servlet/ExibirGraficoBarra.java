@@ -13,7 +13,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 @WebServlet("/GetChartData")
-public class ExibirGraficos extends HttpServlet {
+public class ExibirGraficoBarra extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("application/json");

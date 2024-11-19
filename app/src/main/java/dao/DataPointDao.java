@@ -34,4 +34,31 @@ public class DataPointDao {
 
         return dataPoints;
     }
+
+    public List<DataPoint> getDataPointsArea() {
+        List<DataPoint> dataPoints = new ArrayList<>();
+
+        String sql = "SELECT NOME, TIPO, QUANTIDADE FROM PRODUTO"; // Consulta SQL
+        try (Connection connection = ConnectionPoolConfig.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+
+            while (resultSet.next()) {
+                // Obtendo os dados do banco
+                String nome = resultSet.getString("NOME");
+                String tipo = resultSet.getString("TIPO");
+                double quantidade = resultSet.getDouble("QUANTIDADE");
+
+                // Criando objeto DataPoint e adicionando à lista
+                DataPoint dataPoint = new DataPoint(nome, tipo, quantidade);
+                System.out.println("DataPoint Criado: " + dataPoint.getNome() + ", " + dataPoint.getTipo() + ", " + dataPoint.getQuantidade());
+                dataPoints.add(dataPoint);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return dataPoints;
+    }
+
 }

@@ -1,7 +1,11 @@
 package model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class DataPoint {
     private String nome;
+    private String tipo;
     private double preco;
     private double quantidade;
     private double valorTotal;
@@ -14,6 +18,13 @@ public class DataPoint {
         this.valorTotal = preco * quantidade; // Calculando valor total
     }
 
+
+    public DataPoint(String nome, String tipo, double quantidade) {
+        this.nome = nome;
+        this.tipo = tipo;
+        this.quantidade = quantidade;
+    }
+
     // Getters e Setters
     public String getNome() {
         return nome;
@@ -21,6 +32,14 @@ public class DataPoint {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public double getPreco() {

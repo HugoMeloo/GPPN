@@ -23,7 +23,7 @@
                         <a class="nav-link active" href="index.jsp">Produtos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Empresas</a>
+                        <a class="nav-link" href="/Empresas">Empresas</a>
                     </li>
                     <form class="d-flex ms-3">
                      <a class="btn btn-outline-light" href="/login" role="button">

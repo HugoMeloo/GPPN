@@ -42,7 +42,6 @@ function closeModal() {
     deleteEventModal.style.display = 'none';
     backDrop.style.display = 'none';
     clicked = null;
-    load();
 }
 
 // Salvar evento no backend
@@ -63,7 +62,16 @@ function saveEvent() {
             .then(data => {
                 if (data.success) {
                     alert('Evento salvo com sucesso!');
-                    load(); // Recarregar calendário
+                    // Atualizar apenas o dia clicado
+                    const dayElement = document.querySelector(`[data-date="${clicked}"]`);
+                    const eventDiv = document.createElement('div');
+                    eventDiv.classList.add('event');
+                    eventDiv.innerText = `${eventData.title} - ${eventData.time}`;
+                    dayElement.appendChild(eventDiv);
+
+                    // Adicionar ao objeto `events`
+                    if (!events[clicked]) events[clicked] = [];
+                    events[clicked].push(eventData);
                 } else {
                     alert('Erro ao salvar o evento.');
                 }
@@ -91,7 +99,19 @@ function deleteEvent() {
         .then(data => {
             if (data.success) {
                 alert('Evento deletado com sucesso!');
-                load(); // Recarregar calendário
+                // Remover o evento do DOM
+                const dayElement = document.querySelector(`[data-date="${clicked}"]`);
+                if (dayElement) {
+                    const eventToRemove = Array.from(dayElement.querySelectorAll('.event')).find(
+                        event => event.innerText.startsWith(eventData.title)
+                    );
+                    if (eventToRemove) {
+                        eventToRemove.remove();
+                    }
+                }
+
+                // Atualizar o objeto `events`
+                events[clicked] = events[clicked].filter(event => event.title !== eventData.title);
             } else {
                 alert('Erro ao deletar o evento.');
             }
@@ -145,7 +165,8 @@ function load() {
     // Mostrar mês e ano
     document.getElementById('monthDisplay').innerText = `${date.toLocaleDateString('pt-br', { month: 'long' })}, ${year}`;
 
-    calendar.innerHTML = '';
+    // Limpar o calendário
+    calendar.innerHTML = ''; // Limpa o container antes de renderizar
 
     // Buscar eventos antes de renderizar o calendário
     fetchEvents().then(fetchedEvents => {
@@ -157,6 +178,7 @@ function load() {
             dayS.classList.add('day');
 
             const dayString = `${year}-${String(month + 1).padStart(2, '0')}-${String(i - paddingDays).padStart(2, '0')}`;
+            dayS.setAttribute('data-date', dayString); // Atributo para referência
 
             if (i > paddingDays) {
                 dayS.innerText = i - paddingDays;
@@ -207,5 +229,6 @@ function buttons() {
 // Inicializar
 buttons();
 load();
+
 
 

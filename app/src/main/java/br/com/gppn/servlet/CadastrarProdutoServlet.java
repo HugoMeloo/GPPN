@@ -1,7 +1,9 @@
 package br.com.gppn.servlet;
 
 import dao.ProdutoDao;
+import dao.TipoItemDao;
 import model.Produto;
+import model.TipoItem;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
@@ -32,29 +34,71 @@ public class CadastrarProdutoServlet extends HttpServlet {
         double quantidade = Double.parseDouble(parameters.get("quantidade"));
         double precoUni = Double.parseDouble(parameters.get("preco"));
         String codigoItem = parameters.get("codigoItem");
-        String tipoItem = parameters.get("tipoItem");
+        String tipoItem = parameters.get("tipoItem"); // Pode ser ID ou descrição
         String imagemProduto = parameters.get("imageProduto");
+        String novoTipo = parameters.get("newTipoItem"); // Recebe a descrição do novo tipo, se aplicável
 
+        // Log para depuração
         System.out.println(produtoId);
         System.out.println(nomeProduto);
         System.out.println(quantidade);
         System.out.println(precoUni);
         System.out.println(codigoItem);
-        System.out.println(tipoItem);
+        System.out.println("TipoItem: " + tipoItem);
+        System.out.println("NovoTipo: " + novoTipo);
         System.out.println(imagemProduto);
 
-
         ProdutoDao produtoDao = new ProdutoDao();
-        Produto produto = new Produto(produtoId, nomeProduto, quantidade, precoUni, codigoItem, tipoItem, imagemProduto);
-        if (produtoId == null ||produtoId.isBlank()) {
-            produtoDao.createProduto(produto);
-        } else {
-            produtoDao.updateProduto(produto);
+        TipoItemDao tipoItemDao = new TipoItemDao();
+
+        try {
+            // Verifica se tipoItem é um ID ou uma descrição
+            String tipoItemDescricao;
+
+            if ("addNew".equals(tipoItem)) {
+                // Caso seja um novo tipo
+                if (novoTipo != null && !novoTipo.isBlank()) {
+                    int novoTipoId = tipoItemDao.salvarNovoTipo(novoTipo); // Salva o novo tipo e obtém o ID
+                    tipoItemDescricao = novoTipo; // Usa a descrição do novo tipo
+                    tipoItem = String.valueOf(novoTipoId); // Atualiza tipoItem com o ID gerado
+                } else {
+                    throw new IllegalArgumentException("Descrição do novo tipo de item é inválida.");
+                }
+            } else {
+                // Caso tipoItem seja um ID ou uma descrição
+                try {
+                    // Tenta interpretar tipoItem como um ID
+                    tipoItemDescricao = tipoItemDao.buscarDescricaoPorId(Integer.parseInt(tipoItem));
+                } catch (NumberFormatException e) {
+                    // Se não for um número, assume que já é uma descrição válida
+                    tipoItemDescricao = tipoItem;
+                }
+            }
+
+            System.out.println("TipoItem (Descrição): " + tipoItemDescricao);
+
+            // Cria o objeto produto com a descrição do tipo
+            Produto produto = new Produto(produtoId, nomeProduto, quantidade, precoUni, codigoItem, tipoItemDescricao, imagemProduto);
+
+            // Decide se é uma criação ou atualização
+            if (produtoId == null || produtoId.isBlank()) {
+                produtoDao.createProduto(produto);
+            } else {
+                produtoDao.updateProduto(produto);
+            }
+
+            // Redireciona após sucesso
+            resp.sendRedirect("/ExibirProdutos");
+        } catch (Exception e) {
+            // Log de erro e resposta de erro
+            e.printStackTrace();
+            resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            resp.getWriter().write("Erro ao cadastrar produto: " + e.getMessage());
         }
-        resp.sendRedirect("/ExibirProdutos");
-
-
     }
+
+
+
 
     private Map<String, String> uploadImage(HttpServletRequest httpServletRequest) {
 

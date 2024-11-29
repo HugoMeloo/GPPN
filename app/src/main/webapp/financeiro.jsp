@@ -102,16 +102,7 @@
                 <h2>Dashboard de Finanças</h2>
 
 
-                <div class="position-fixed bottom-0 end-0 m-3">
-                    <div class="dropdown">
-                        <button class="btn bg-warning text-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Ações
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#cadastrarProdutoModal">Financeiro</a></li>
-                        </ul>
-                    </div>
-                </div>
+
       <div class="dashboard">
               <div class="chart-container">
                   <div class="chart-title">Valor Total</div>
